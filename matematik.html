@@ -1,0 +1,144 @@
+
+
+<script src="jquery/jquery.min.js"></script>
+
+<div class="text-center">
+    <h1 id="soruNo"></h1>
+    <p id="soru"></p>
+  
+    <h1 id="cevapNo"></h1>
+
+    <input type="text" value="" id="cevap"/> <input type="button" value="Cevapla" onclick="SifreBul()"/>
+    <input type="button" value="<<--" onclick="Onceki()"/>
+    <input type="button" value="-->>" onclick="Sonraki()"/>
+
+    <br /> <br /> <br /> <br /> <br /> <br /> <br /> <br /> <br /> <br />
+    <div>
+        <input type="text" id="c1" style="width:50px;font-size: 40px;"/>
+        <input type="text" id="c2" style="width:50px;font-size: 40px;"/>
+        <input type="text" id="c3" style="width:50px;font-size: 40px;"/>
+        <input type="text" id="c4" style="width:50px;font-size: 40px;"/>
+        <input type="text" id="c5" style="width:50px;font-size: 40px;"/>
+        <input type="text" id="c6" style="width:50px;font-size: 40px;"/>
+        <input type="text" id="c7" style="width:50px;font-size: 40px;"/>
+        <input type="text" id="c8" style="width:50px;font-size: 40px;"/>
+        <input type="text" id="c9" style="width:50px;font-size: 40px;"/>
+
+        &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
+        <input type="text" id="c10" style="width:50px;font-size: 40px;"/>
+        <input type="text" id="c11" style="width:50px;font-size: 40px;"/>
+        <input type="text" id="c12" style="width:50px;font-size: 40px;"/>
+        <br /><br />
+        &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
+        <br />
+        <input type="text" id="c13" style="width:50px;font-size: 40px;"/>
+        <input type="text" id="c14" style="width:50px;font-size: 40px;"/>
+        <input type="text" id="c15" style="width:50px;font-size: 40px;"/>
+        <input type="text" id="c16" style="width:50px;font-size: 40px;"/>
+        <input type="text" id="c17" style="width:50px;font-size: 40px;"/>
+        <input type="text" id="c18" style="width:50px;font-size: 40px;"/>
+        <input type="text" id="c19" style="width:50px;font-size: 40px;"/>
+        <input type="text" id="c20" style="width:50px;font-size: 40px;"/>
+        <input type="text" id="c21" style="width:50px;font-size: 40px;"/>
+        &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
+
+        
+        <input type="text" id="c22" style="width:50px;font-size: 40px;"/>
+        <input type="text" id="c23" style="width:50px;font-size: 40px;"/>
+        <input type="text" id="c24" style="width:50px;font-size: 40px;"/>
+        &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
+
+        
+        <input type="text" id="c25" style="width:50px;font-size: 40px;"/>
+        <input type="text" id="c26" style="width:50px;font-size: 40px;"/>
+        <input type="text" id="c27" style="width:50px;font-size: 40px;"/>        
+        <input type="text" id="c28" style="width:50px;font-size: 40px;"/>
+        <input type="text" id="c29" style="width:50px;font-size: 40px;"/>
+        <input type="text" id="c30" style="width:50px;font-size: 40px;"/>
+        <input type="text" id="c31" style="width:50px;font-size: 40px;"/>
+
+    </div></div>
+
+
+
+
+<script>
+    $( document ).ready(function() {
+        SoruYukle();
+    });
+
+    function SoruYukle(){
+        $("#soruNo").text("1.Soru");
+        $("#cevapNo").text("1.Cevap");
+        $("#soru").text(soruListe[0]);
+    }
+
+    function Onceki(){
+      var kacinci =   $("#soruNo").text().split('.');
+      $("#soru").text(soruListe[parseInt(kacinci)-1]);
+      $("#soruNo").text(parseInt(kacinci)-1+".Soru");
+      $("#cevapNo").text(parseInt(kacinci)-1+".Cevap");
+      $("#cevap").val("");
+    }
+
+    function Sonraki(){
+        var kacinci =   $("#soruNo").text().split('.');
+        $("#soru").text(soruListe[parseInt(kacinci)]);
+        
+      $("#soruNo").text(parseInt(kacinci)+1+".Soru");
+      $("#cevapNo").text(parseInt(kacinci)+1+".Cevap");
+      $("#cevap").val("");
+    }
+
+    function SifreBul(){
+        //  var Alfabe ={"A","B","C"};
+        //alert(Alfabe(0));
+        var cevap = $("#cevap").val();
+
+        alert(cevapSifreListe[cevap-1]);
+        $("#c"+$("#soruNo").text().split('.')).val(cevapSifreListe[cevap-1]);
+    }
+
+    var soruListe = [
+        "Doğal sayılar ile verilen çıkartma işlemini yapınız.1000-984=?",
+        "^ işaretine gelecek rakamı bulunuz.12.5^1-11.299=1212",
+        "Bir örüntünün 1. adımında 3 elma,2. adımında 6 elma,3. adımda ise 9 tane elma varsa bu örüntünün 8. adımında kaç tane elma olur?",
+        "Elif 2016 doğumludur.Şuan 2022 yılında olduğumuza göre elif kaç yaşındadır?",
+        "Parantezli işlemi yapınız : (8*8)/4=?",
+        "Alya'nın 18 tl'si vardır.Ertesi gün babası 10 tl daha vermiştir.Markete giden alya almak istediği bir çantanın 47 tl' den 27 tl'ye düştüğünü görünce babasının verdiği    para ile çantayı almıştır.Kasa görevlisi ona kaç tl para üstü verir?",
+        "20000-19976=? : Çıkartma işlemini yapınız.",
+        "87^+87^=1.752 : ^+^=?",
+        "Bir okulun deposunda 42 tane sıra vardır.Bu sıralar 3 sınıfa eşit olarak bölüştülürülse her sınıfa kaç tane sıra düşer?",
+        "100 kişilik bir davettte 25 tane masa vardır.Her masaya kaç kişi oturabilir?",
+        "Parantezli işlemi yapınız : (90/5)*1=?",
+        "Açelya 336 tl'ye aldığı akıllı saati,2 yıl (24 ay) taksitlendirmiştir.Her ay kaç tl öder?",
+        "Bir kumbarada 10 tane 10 kr,40 tane 5 kr,12 tane ise 25 kr vardır.Bu kumbarada kaç tl vardır?",
+        "487 629 : Sayısında birler basamağında bulunan 9'ün basamak değerini bulunuz.",
+        "Doğal sayılarla yapılan bir bölme işleminde bölen 6 olduğuna göre kalanın alabileceği değerin toplamı kaçtır*",
+        "Parantezli işlemi yapınız : (6*6)/6=?",
+        "65+...=82 : Verilmeyeni bulunuz.",
+        "60 tane 5 kr'u olan akif'in kaç tl'si vardır?",
+        "2'şer giden bir örüntü 3. adımda hangi rakamda olur?",
+        "100000-99985=? : Çıkartma işlemini yapınız.",
+        "85-.....=73 : Verilmeyeni bulunuz.",
+        "4*4 üslü ifadesinde 4^,^ işaretine hangi rakam gelecektir?",
+        "^9+9^=165 : ^+^=?",
+        "Leyla 7 yaşında iken teyzesinin yaşı leyla'nın 2 katıdır.Leyla ve teyzesinin şuanki yaşlarının toplamı kaçtır?",
+        "2000/1000=? - 3000/1000=? = ?+?=?",
+        "Özel bir ingilizce kursunda öğretmenlik yapan senem her ay 6000 tl kazanıyor.Her öğrencisi 1000 tl verdiğine göre kaç tane öğrencisi vardır?",
+        "Verilmeyen toplananı bulunuz : 69+...=90",
+        "22.344.567 : milyonlar bölüğündeki rakamı yazınız.",
+        "87-...=63 : verilmeyeni bulunuz.",
+        "Parantezli işlemi yapınız : (100/25)*3=?",
+        "Bir simitçi haftada 147 tane simit sattığına göre günde kaç tane simit satmıştır? "    
+    ];
+
+    var cevapListe = [1,2,3,4,5,6,7,8,9,10,11,12,13,14,15,16,17,18,19,20,21,22,23,24,25,26,27,28,29];
+
+    var cevapSifreListe = ["A","B","C","Ç","D","E","F","G","Ğ","H","I","İ","J","K","L","M","N","O","Ö","P","R","S","Ş","T","U","Ü","V","Y","Z"];
+
+    
+
+
+  
+</script>
